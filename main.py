@@ -6,11 +6,13 @@ Aim of the program :
 Inputs :
 Output :
 """
+from functions.CONFIGS import *
+from functions.class_app import *
 
 
 def main():
     """"""
-    pass
+    App().run()
 
 
 if __name__ == "__main__":  # The program will be run only if executed directly, not if it is called by another program.
