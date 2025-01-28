@@ -16,6 +16,12 @@ running = True
 while running:
     
     SCREEN.blit(BACKGROUND, (0, 0))
+    SCREEN.blit(APPLE, (WIDTH/2, HEIGHT/2))
+    SCREEN.blit(BANANA, (WIDTH/3, HEIGHT/3))
+    SCREEN.blit(CHERRY, (WIDTH/4, HEIGHT/6))
+    SCREEN.blit(MANGO, (WIDTH/6, HEIGHT/4))
+    SCREEN.blit(PEAR, (WIDTH/8, HEIGHT))
+    SCREEN.blit(STRAWBERRY, (WIDTH/9, HEIGHT/8))
 
     for event in pygame.event.get():
         
@@ -24,7 +30,8 @@ while running:
         
         pygame.display.flip()
         
-    pygame.quit()
+pygame.quit()
+pygame.font.quit()
 
 if __name__ == "__main__":  # The program will be run only if executed directly, not if it is called by another program.
     main()
