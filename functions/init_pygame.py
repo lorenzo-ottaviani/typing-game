@@ -16,7 +16,7 @@ BACKGROUND_IMAGE = pygame.image.load("assets/images/wooden_background.jpg")
 BACKGROUND = pygame.transform.scale(BACKGROUND_IMAGE, SCREEN_SIZE)
 
 # Font choice
-FONT = pygame.font.Font('Tsuchigumo.otf', 50)
+FONT = pygame.font.Font('Tsuchigumo.otf', 25)
 
 # Colors
 WHITE = (255, 255, 255)
