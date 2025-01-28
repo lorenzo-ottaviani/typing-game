@@ -16,12 +16,14 @@ running = True
 while running:
     
     SCREEN.blit(BACKGROUND, (0, 0))
-    SCREEN.blit(APPLE, (WIDTH/2, HEIGHT/2))
-    SCREEN.blit(BANANA, (WIDTH/3, HEIGHT/3))
-    SCREEN.blit(CHERRY, (WIDTH/4, HEIGHT/6))
-    SCREEN.blit(MANGO, (WIDTH/6, HEIGHT/4))
-    SCREEN.blit(PEAR, (WIDTH/8, HEIGHT))
-    SCREEN.blit(STRAWBERRY, (WIDTH/9, HEIGHT/8))
+    SCREEN.blit(APPLE, (100, 50))
+    SCREEN.blit(BANANA, (650, 350))
+    # SCREEN.blit(BOMB, (250, 500))
+    SCREEN.blit(CHERRY, (1000, 50))
+    SCREEN.blit(ICE_CUBE, (150, 150))
+    SCREEN.blit(MANGO, (400, 450))
+    SCREEN.blit(PEAR, (900, 550))
+    SCREEN.blit(STRAWBERRY, (1200, 450))
 
     for event in pygame.event.get():
         

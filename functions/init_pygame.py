@@ -22,10 +22,18 @@ FONT = pygame.font.Font('Tsuchigumo.otf', 50)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
-# Get fruits
+# Get objects
 APPLE = pygame.image.load("assets/images/fruits/apple.png")
 BANANA = pygame.image.load("assets/images/fruits/banana.png")
+BOMB = pygame.image.load("assets/images/fruits/bomb.png")
 CHERRY = pygame.image.load("assets/images/fruits/cherry.png")
+ICE_CUBE = pygame.image.load("assets/images/fruits/ice_cube.png")
 MANGO = pygame.image.load("assets/images/fruits/mango.png")
 PEAR = pygame.image.load("assets/images/fruits/pear.png")
 STRAWBERRY = pygame.image.load("assets/images/fruits/strawberry.png")
+
+# Get object type
+object_type = ["apple", "banana", "bomb", "cherry", "ice_cube", "mango", "pear", "strawberry"]
+
+# Init data
+object_data = {}
