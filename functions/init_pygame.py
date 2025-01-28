@@ -1,13 +1,12 @@
 import pygame
 
-# Initialisation de Pygame
+#initialize pygame
 pygame.init()
-pygame.font.init()
 
-# Taille de la fenêtre de jeu
+# Define size of the screen and add background
 SCREEN_SIZE = 1400, 785
 SCREEN = pygame.display.set_mode(SCREEN_SIZE)
 BACKGROUND = "assets/images/wooden_background.jpg"
 
-# Choix de la police
+# Font choice
 FONT = pygame.font.SysFont('Roboto', 35)

@@ -7,8 +7,7 @@ Inputs :
 Output :
 """
 import pygame
-
-pygame.init()
+from functions.init_pygame import *
 
 
 def main():
@@ -16,7 +15,12 @@ def main():
 running = True
 
 while running:
-    
+    # flags = RESIZABLE
+        SCREEN = pygame.display.set_mode(SCREEN_SIZE)
+
+        BACKGROUND = pygame.transform.scale(pygame.image.load(BACKGROUND_IMAGE), SCREEN_SIZE)
+        BACKGROUND = SCREEN.blit(BACKGROUND, (0, 0))
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
