@@ -14,7 +14,7 @@ from functions.generate_random_fruits import generate_random_fruits
 def main():
     """"""
     App().run()
-    generate_random_fruits()
+    fruit = generate_random_fruits(fruit)
 
 
 if __name__ == "__main__":  # The program will be run only if executed directly, not if it is called by another program.
