@@ -8,10 +8,18 @@ Output :
 """
 import pygame
 
+pygame.init()
+
 
 def main():
     """"""
+running = True
 
+while running:
+    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
 
 if __name__ == "__main__":  # The program will be run only if executed directly, not if it is called by another program.
     main()
