@@ -1,0 +1,35 @@
+from .init_pygame import *
+from .draw_text import draw_text
+
+def menu():
+    
+    # Add images behind background
+    SCREEN.blit(APPLE, (100, 50))
+    SCREEN.blit(BANANA, (650, 350))
+    SCREEN.blit(BOMB, (1220, 70))
+    SCREEN.blit(CHERRY, (1000, 50))
+    SCREEN.blit(ICE_CUBE, (80, 550))
+    SCREEN.blit(MANGO, (400, 450))
+    SCREEN.blit(PEAR, (900, 550))
+    SCREEN.blit(STRAWBERRY, (1200, 450))
+    
+    # Add a menu background
+    menu_background = pygame.Surface((1000, 600))
+    menu_background.set_alpha(200)
+    menu_background.fill(WHITE)
+    SCREEN.blit(menu_background, (200, 185/2))
+    
+    # Add game logo
+    logo_image = pygame.image.load("assets/images/Logo.png").convert_alpha()
+    logo = pygame.transform.scale(logo_image, (700, 250))
+    logo_rect = logo.get_rect()
+    logo_rect.center = (730, 220)
+    SCREEN.blit(logo, logo_rect)
+    
+    # Add explanation text to explain how to play
+    draw_text("Comment jouer à Fruit Ninja Slicer ?", FONT_SUB_HEADER, ORANGE, 700, 380)
+    draw_text("Cliquer sur le bouton jouer", FONT, ORANGE, 700, 440)
+    draw_text("Des fruits vont apparaitre avec une lettre", FONT, ORANGE, 700, 480)
+    draw_text("Vous devez taper la touche correspondante", FONT, ORANGE, 700, 520)
+    draw_text("Les glaçons vous donnent un bonus de temps de 5 secondes", FONT, ORANGE, 700, 560)
+    draw_text("Attention !!! Ne pas couper les bombes !!!", FONT, ORANGE, 700, 600)

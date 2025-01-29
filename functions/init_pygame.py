@@ -18,11 +18,14 @@ BACKGROUND_IMAGE = pygame.image.load("assets/images/wooden_background.jpg")
 BACKGROUND = pygame.transform.scale(BACKGROUND_IMAGE, SCREEN_SIZE)
 
 # Font choice
-FONT = pygame.font.Font('Tsuchigumo.otf', 50)
+FONT_HEADER = pygame.font.Font('Tsuchigumo.otf', 60)
+FONT_SUB_HEADER = pygame.font.Font('Tsuchigumo.otf', 40)
+FONT = pygame.font.Font('Tsuchigumo.otf', 25)
 
 # Colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+ORANGE = (239, 54, 23)
 
 # Get objects
 APPLE = pygame.image.load("assets/images/fruits/apple.png")

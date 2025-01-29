@@ -6,7 +6,11 @@ Aim of the program :
 Inputs :
 Output :
 """
+# Init pygame
 from functions.init_pygame import *
+
+# import functions
+from functions.menu import menu
 from functions.play_game import play_game
 
 
@@ -28,7 +32,7 @@ while running:
             running = False
 
         if game_state == "menu":
-            # menu()
+            menu()
             print("launch menu")  # for testing
             loop += 1  # for testing
 
