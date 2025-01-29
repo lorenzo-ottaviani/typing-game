@@ -23,14 +23,6 @@ while running:
     # Show background
     SCREEN.blit(BACKGROUND, (0, 0))
     show_menu = True
-    SCREEN.blit(APPLE, (100, 50))
-    SCREEN.blit(BANANA, (650, 350))
-    # SCREEN.blit(BOMB, (250, 500))
-    SCREEN.blit(CHERRY, (1000, 50))
-    # SCREEN.blit(ICE_CUBE, (150, 150))
-    SCREEN.blit(MANGO, (400, 450))
-    SCREEN.blit(PEAR, (900, 550))
-    SCREEN.blit(STRAWBERRY, (1200, 450))
 
     for event in pygame.event.get():
         if show_menu == True:
