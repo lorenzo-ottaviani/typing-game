@@ -10,13 +10,10 @@ frozen_timer = 900  # 900 frames /60 = 15
 input_type = None
 # level = 1
 
-def play_game():
-    print("play game")
+def play_game(event):
+    # print("play game")
 
-    game_running = True
-    while game_running:
-
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                # handle_key_press(event.key)
-                print("key pressed")
+    # for event in pygame.event.get():
+    if event.type == pygame.KEYDOWN:
+            # handle_key_press(event.key)
+            print("key pressed")

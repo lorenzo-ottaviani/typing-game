@@ -1,7 +1,5 @@
 import pygame
 from pygame.locals import *
-import random
-import math
 
 #initialize pygame
 pygame.init()

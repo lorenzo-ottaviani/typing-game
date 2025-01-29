@@ -17,7 +17,7 @@ from functions.play_game import play_game
 def main():
     """"""
 # Init data
-game_state = "menu"
+game_state = "game"
 max_objects = 4  # max number of obejects on screen at the same time (for difficulty & game)
 
 loop = 0  # for testing
@@ -37,7 +37,7 @@ while running:
             loop += 1  # for testing
 
         elif game_state == "game":
-            play_game()
+            play_game(event)
             
             SCREEN.blit(APPLE, (100, 50))
             SCREEN.blit(BANANA, (650, 350))
@@ -47,7 +47,9 @@ while running:
             SCREEN.blit(MANGO, (400, 450))
             SCREEN.blit(PEAR, (900, 550))
             SCREEN.blit(STRAWBERRY, (1200, 450))
-        print(f"end of loop {loop}") # for testing
+
+            loop += 1  # for testing
+        # print(f"end of loop {loop}") # for testing
         
     pygame.display.flip()
     clock.tick(60) 
