@@ -37,18 +37,10 @@ while running:
             # loop += 1  # for testing
 
         elif game_state == "game":
-            play_game(event)
-            
-            SCREEN.blit(APPLE, (100, 50))
-            SCREEN.blit(BANANA, (650, 350))
-            SCREEN.blit(BOMB, (250, 500))
-            SCREEN.blit(CHERRY, (1000, 50))
-            SCREEN.blit(ICE_CUBE, (150, 150))
-            SCREEN.blit(MANGO, (400, 450))
-            SCREEN.blit(PEAR, (900, 550))
-            SCREEN.blit(STRAWBERRY, (1200, 450))
+            game_state = play_game(event)
+            # print(f"game state: {game_state}")
 
-            loop += 1  # for testing
+        #     loop += 1  # for testing
         # print(f"end of loop {loop}") # for testing
         
     pygame.display.flip()
