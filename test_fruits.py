@@ -1,4 +1,5 @@
 import pygame
+from random import uniform
 
 from functions.CONFIGS import *
 
@@ -10,10 +11,17 @@ screen = pygame.display.set_mode(SCREEN_SIZE)
 
 clock = pygame.time.Clock()
 
-x0 = 500
-y0 = 300
-v = 10
-t0 = pygame.time.get_ticks()
+x_min = 6/14 * SCREEN_WIDTH
+x_max = 8/14 * SCREEN_WIDTH
+
+x = uniform(x_min, x_max)
+
+y = SCREEN_HEIGHT
+
+vx = uniform(-7, 7)
+vy = uniform(-17, -15)
+
+t0 = pygame.time.get_ticks()  # Initial time
 
 running = True
 while running:
@@ -21,16 +29,18 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    t = (pygame.time.get_ticks() - t0) / 50
+    # t = t0  # Reset time at the beginning of object movement.
 
-    x = x0 + v * t
-    y = y0 + v * t
+    t = (pygame.time.get_ticks() - t0) / 400  # Count the time during movement.
 
-    screen.fill((0, 0, 0))  # Optional: Clears the screen every frame (black background)
-    screen.blit(apple, (x, y))
+    x += vx
+    y += vy * t + 5 * t**2
 
+    screen.fill((0, 0, 0))  # Cancel old place of image during movement.
+    screen.blit(apple, (x,y))
     pygame.display.flip()
 
     clock.tick(60)
 
 pygame.quit()
+
