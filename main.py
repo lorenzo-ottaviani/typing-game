@@ -34,14 +34,14 @@ while running:
         if game_state == "menu":
             menu()
             print("launch menu")  # for testing
-            loop += 1  # for testing
+            # loop += 1  # for testing
 
         elif game_state == "game":
-            play_game(event)
-            print(f"game state: {game_state}")
+            game_state = play_game(event)
+            # print(f"game state: {game_state}")
 
-            loop += 1  # for testing
-        print(f"end of loop {loop}") # for testing
+        #     loop += 1  # for testing
+        # print(f"end of loop {loop}") # for testing
         
     pygame.display.flip()
     clock.tick(60) 
