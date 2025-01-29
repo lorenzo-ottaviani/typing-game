@@ -6,28 +6,34 @@ Aim of the program :
 Inputs :
 Output :
 """
-import pygame
-import random
-screen = pygame.display.set_mode((640, 240))
+from functions.init_pygame import *
+
 
 def main():
     """"""
-    app_running = True
-    while app_running:
+running = True
+
+while running:
+    
+    SCREEN.blit(BACKGROUND, (0, 0))
+    SCREEN.blit(APPLE, (100, 50))
+    SCREEN.blit(BANANA, (650, 350))
+    # SCREEN.blit(BOMB, (250, 500))
+    SCREEN.blit(CHERRY, (1000, 50))
+    SCREEN.blit(ICE_CUBE, (150, 150))
+    SCREEN.blit(MANGO, (400, 450))
+    SCREEN.blit(PEAR, (900, 550))
+    SCREEN.blit(STRAWBERRY, (1200, 450))
+
+    for event in pygame.event.get():
         
-        for event in pygame.event.get():
-            print(event)
-
-            if event.type == pygame.KEYDOWN:
-                if event.key == 27 or event.key == 13: #esc or enter keys
-                    app_running = False
-
         if event.type == pygame.QUIT:
-            app_running = False
-
-        # if event.unicode == "/x1b":
-        #     app_running = False
-
+            running = False
+        
+        pygame.display.flip()
+        
+pygame.quit()
+pygame.font.quit()
 
 if __name__ == "__main__":  # The program will be run only if executed directly, not if it is called by another program.
     main()
