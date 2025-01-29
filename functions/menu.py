@@ -2,7 +2,24 @@ from .init_pygame import *
 from .draw_text import draw_text
 
 def menu():
-    draw_text("Lorem ipsum dolor sit amet, consectetur adipiscing elit", FONT, WHITE, 200, 540)
-    draw_text("Duis ultricies molestie metus, feugiat placerat odio tincidunt id. Sed facilisis lorem quis diam hendrerit,", FONT, WHITE, 200, 580)
-    draw_text("sit amet pharetra tortor ornare. Vivamus varius accumsan eleifend. Morbi auctor tincidunt sagittis. Integer viverra magna ut efficitur auctor. Maecenas vitae lorem nisi.", FONT, WHITE, 200, 620)
-    draw_text("Integer in odio a elit tincidunt efficitur. In in diam sed arcu vestibulum convallis. \nEtiam bibendum est ut augue porta ultrices. Donec sit amet augue ut velit rhoncus cursus id eget metus.", FONT, WHITE, 200, 660)
+    
+    # Add a menu background
+    menu_background = pygame.Surface((1000, 600))
+    menu_background.set_alpha(200)
+    menu_background.fill(WHITE)
+    SCREEN.blit(menu_background, (200, 185/2))
+    
+    # Add game logo
+    logo_image = pygame.image.load("assets/images/Logo.png").convert_alpha()
+    logo = pygame.transform.scale(logo_image, (700, 250))
+    logo_rect = logo.get_rect()
+    logo_rect.center = (730, 220)
+    SCREEN.blit(logo, logo_rect)
+    
+    # Add explanation text to explain how to play
+    draw_text("Comment jouer à Fruit Ninja Slicer ?", FONT_SUB_HEADER, ORANGE, 700, 380)
+    draw_text("Cliquer sur le bouton jouer", FONT, ORANGE, 700, 440)
+    draw_text("Des fruits vont apparaitre avec une lettre", FONT, ORANGE, 700, 480)
+    draw_text("Vous devez taper la touche correspondante", FONT, ORANGE, 700, 520)
+    draw_text("Les glaçons vous donnent un bonus de temps de 5 secondes", FONT, ORANGE, 700, 560)
+    draw_text("Attention !!! Ne pas couper les bombes !!!", FONT, ORANGE, 700, 600)
