@@ -7,30 +7,46 @@ Inputs :
 Output :
 """
 from functions.init_pygame import *
+from functions.play_game import play_game
 
 
 def main():
     """"""
+# Init data
+game_state = "menu"
+max_objects = 4  # max number of obejects on screen at the same time (for difficulty & game)
+
+loop = 0  # for testing
+
+SCREEN.blit(BACKGROUND, (0, 0))
+
 running = True
-
 while running:
-    
-    SCREEN.blit(BACKGROUND, (0, 0))
-    SCREEN.blit(APPLE, (100, 50))
-    SCREEN.blit(BANANA, (650, 350))
-    # SCREEN.blit(BOMB, (250, 500))
-    SCREEN.blit(CHERRY, (1000, 50))
-    SCREEN.blit(ICE_CUBE, (150, 150))
-    SCREEN.blit(MANGO, (400, 450))
-    SCREEN.blit(PEAR, (900, 550))
-    SCREEN.blit(STRAWBERRY, (1200, 450))
-
     for event in pygame.event.get():
         
         if event.type == pygame.QUIT:
             running = False
+
+        if game_state == "menu":
+            # menu()
+            print("launch menu")  # for testing
+            loop += 1  # for testing
+
+        elif game_state == "game":
+            play_game()
+            
+            SCREEN.blit(APPLE, (100, 50))
+            SCREEN.blit(BANANA, (650, 350))
+            SCREEN.blit(BOMB, (250, 500))
+            SCREEN.blit(CHERRY, (1000, 50))
+            SCREEN.blit(ICE_CUBE, (150, 150))
+            SCREEN.blit(MANGO, (400, 450))
+            SCREEN.blit(PEAR, (900, 550))
+            SCREEN.blit(STRAWBERRY, (1200, 450))
+        print(f"end of loop {loop}") # for testing
         
-        pygame.display.flip()
+    pygame.display.flip()
+    clock.tick(60) 
         
 pygame.quit()
 pygame.font.quit()

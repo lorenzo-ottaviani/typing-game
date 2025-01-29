@@ -1,5 +1,7 @@
 import pygame
 from pygame.locals import *
+import random
+import math
 
 #initialize pygame
 pygame.init()
@@ -8,7 +10,7 @@ pygame.font.init()
 # Define size of the screen
 WIDTH = 1400
 HEIGHT = 785
-SCREEN_SIZE = 1400, 785
+SCREEN_SIZE = WIDTH, HEIGHT
 SCREEN = pygame.display.set_mode(SCREEN_SIZE)
 
 # Add background image
@@ -32,8 +34,10 @@ MANGO = pygame.image.load("assets/images/fruits/mango.png")
 PEAR = pygame.image.load("assets/images/fruits/pear.png")
 STRAWBERRY = pygame.image.load("assets/images/fruits/strawberry.png")
 
+clock = pygame.time.Clock()
+
+# game variables
 # Get object type
 object_type = ["apple", "banana", "bomb", "cherry", "ice_cube", "mango", "pear", "strawberry"]
-
-# Init data
 object_data = {}
+OBJECT_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
