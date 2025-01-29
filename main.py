@@ -46,9 +46,6 @@ while running:
             SCREEN.blit(MANGO, (400, 450))
             SCREEN.blit(PEAR, (900, 550))
             SCREEN.blit(STRAWBERRY, (1200, 450))
-
-            loop += 1  # for testing
-        # print(f"end of loop {loop}") # for testing
         
     pygame.display.flip()
     clock.tick(60) 
