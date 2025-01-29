@@ -16,7 +16,7 @@ x_min = 6/14 * SCREEN_WIDTH
 x_max = 8/14 * SCREEN_WIDTH
 
 objet = {"type": "random(object_types)", "x": uniform(x_min, x_max), "y": SCREEN_HEIGHT, "speed_x": uniform(-7, 7),
-         "speed_y": uniform(-17, -15)}
+         "speed_y": uniform(-17, -15), "apple": apple, "pear": pear}
 
 x_apple = uniform(x_min, x_max)
 
@@ -49,6 +49,12 @@ while running:
     x_pear += speed_x_pear
     y_pear += speed_y_pear * t + 5 * t ** 2
 
+    # x_apple = objet["x"] + objet["speed_x"]
+    # y_apple = objet["y"] + objet["speed_y"] * t + 5 * t ** 2
+    #
+    # x_pear = objet["x"] + objet["speed_x"]
+    # y_pear = objet["y"] + objet["speed_y"] * t + 5 * t ** 2
+
     screen.fill((0, 0, 0))  # Cancel old place of image during movement.
     screen.blit(apple, (x_apple, y_apple))
     screen.blit(pear, (x_pear, y_pear))
@@ -57,4 +63,3 @@ while running:
     clock.tick(60)
 
 pygame.quit()
-
