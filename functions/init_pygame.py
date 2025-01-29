@@ -32,8 +32,12 @@ BOMB = pygame.image.load("assets/images/fruits/bomb.png")
 CHERRY = pygame.image.load("assets/images/fruits/cherry.png")
 ICE_CUBE = pygame.image.load("assets/images/fruits/ice_cube.png")
 MANGO = pygame.image.load("assets/images/fruits/mango.png")
+MANGO_TOP = pygame.image.load("assets/images/fruits/mango_top.png")
+MANGO_BOTTOM = pygame.image.load("assets/images/fruits/mango_bottom.png")
 PEAR = pygame.image.load("assets/images/fruits/pear.png")
 STRAWBERRY = pygame.image.load("assets/images/fruits/strawberry.png")
+STRAWBERRY_TOP = pygame.image.load("assets/images/fruits/strawberry_top.png")
+STRAWBERRY_BOTTOM = pygame.image.load("assets/images/fruits/strawberry_Bottom.png")
 
 clock = pygame.time.Clock()
 

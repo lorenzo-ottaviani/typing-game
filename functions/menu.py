@@ -5,17 +5,19 @@ def menu():
     
     # Add images behind background
     SCREEN.blit(APPLE, (100, 50))
-    SCREEN.blit(BANANA, (650, 350))
+    SCREEN.blit(BANANA, (350, 590))
     SCREEN.blit(BOMB, (1220, 70))
     SCREEN.blit(CHERRY, (1000, 50))
     SCREEN.blit(ICE_CUBE, (80, 550))
-    SCREEN.blit(MANGO, (400, 450))
+    SCREEN.blit(MANGO_TOP, (180, 250))
+    SCREEN.blit(MANGO_BOTTOM, (120, 350))
     SCREEN.blit(PEAR, (900, 550))
-    SCREEN.blit(STRAWBERRY, (1200, 450))
+    SCREEN.blit(STRAWBERRY_TOP, (1170, 350))
+    SCREEN.blit(STRAWBERRY_BOTTOM, (1200, 450))
     
     # Add a menu background
     menu_background = pygame.Surface((1000, 600))
-    menu_background.set_alpha(200)
+    menu_background.set_alpha(40)
     menu_background.fill(WHITE)
     SCREEN.blit(menu_background, (200, 185/2))
     
