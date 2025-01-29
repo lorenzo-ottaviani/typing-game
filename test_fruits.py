@@ -18,8 +18,8 @@ x = uniform(x_min, x_max)
 
 y = SCREEN_HEIGHT
 
-vx = uniform(-7, 7)
-vy = uniform(-17, -15)
+speed_x = uniform(-7, 7)
+speed_y = uniform(-17, -15)
 
 t0 = pygame.time.get_ticks()  # Initial time
 
@@ -33,8 +33,8 @@ while running:
 
     t = (pygame.time.get_ticks() - t0) / 400  # Count the time during movement.
 
-    x += vx
-    y += vy * t + 5 * t**2
+    x += speed_x
+    y += speed_y * t + 5 * t**2
 
     screen.fill((0, 0, 0))  # Cancel old place of image during movement.
     screen.blit(apple, (x,y))

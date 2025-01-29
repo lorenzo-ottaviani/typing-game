@@ -16,16 +16,16 @@ def object_movement(object, t0):
 
         y = SCREEN_HEIGHT
 
-        vx = uniform(-7, 7)
-        vy = uniform(-17, -15)
+        speed_x = uniform(-7, 7)
+        speed_y = uniform(-17, -15)
 
-        return x, y, vx, vy
+        return x, y, speed_x, speed_y
 
-    x, y, vx, vy = object_characteristics()
+    x, y, speed_x, speed_y = object_characteristics()
 
     t = (pygame.time.get_ticks() - t0) / 400  # Count the time during movement.
-    x += vx
-    y += vy * t + 5 * t ** 2
+    x += speed_x
+    y += speed_y * t + 5 * t ** 2
 
     return x, y
 
@@ -47,8 +47,8 @@ t0 = pygame.time.get_ticks()  # Time at the beginning of object movement.
 #
 # y = SCREEN_HEIGHT
 #
-# vx = uniform(-7, 7)
-# vy = uniform(-17, -15)
+# speed_x = uniform(-7, 7)
+# speed_y = uniform(-17, -15)
 #
 # t0 = pygame.time.get_ticks()  # initial time
 
@@ -62,8 +62,8 @@ while running:
 
     t = (pygame.time.get_ticks() - t0) / 400  # Count the time during movement.
 
-    # x += vx
-    # y += vy * t + 5 * t**2
+    # x += speed_x
+    # y += speed_y * t + 5 * t**2
     x = object_movement(apple, t0)[0]
     y = object_movement(apple, t0)[1]
     screen.blit(apple, (x,y))
