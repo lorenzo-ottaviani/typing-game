@@ -25,6 +25,7 @@ loop = 0  # for testing
 SCREEN.blit(BACKGROUND, (0, 0))
 
 running = True
+
 while running:
     for event in pygame.event.get():
         
@@ -32,9 +33,7 @@ while running:
             running = False
 
         if game_state == "menu":
-            menu()
-            print("launch menu")  # for testing
-            # loop += 1  # for testing
+            game_state = menu(event, game_state)
 
         elif game_state == "game":
             play_game(event)

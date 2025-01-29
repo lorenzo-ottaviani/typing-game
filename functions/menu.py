@@ -1,7 +1,8 @@
 from .init_pygame import *
 from .draw_text import draw_text
+from .play_button import play_button
 
-def menu():
+def menu(event, game_state):
     
     # Add images behind background
     SCREEN.blit(APPLE, (100, 50))
@@ -16,9 +17,9 @@ def menu():
     SCREEN.blit(STRAWBERRY_BOTTOM, (1200, 450))
     
     # Add a menu background
-    menu_background = pygame.Surface((1000, 600))
-    menu_background.set_alpha(40)
-    menu_background.fill(WHITE)
+    menu_background = pygame.Surface((1000, 600), pygame.SRCALPHA)
+    # menu_background.set_alpha(40)
+    menu_background.fill((255,255,255,20))
     SCREEN.blit(menu_background, (200, 185/2))
     
     # Add game logo
@@ -35,3 +36,8 @@ def menu():
     draw_text("Vous devez taper la touche correspondante", FONT, ORANGE, 700, 520)
     draw_text("Les glaçons vous donnent un bonus de temps de 5 secondes", FONT, ORANGE, 700, 560)
     draw_text("Attention !!! Ne pas couper les bombes !!!", FONT, ORANGE, 700, 600)
+    
+    # Call play_button
+    game_state = play_button(event)
+    # print(game_state)
+    return game_state
