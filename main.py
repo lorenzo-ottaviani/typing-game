@@ -12,12 +12,15 @@ from functions.init_pygame import *
 # import functions
 from functions.menu import menu
 from functions.play_game import play_game
+from functions.play_music import draw_music_button
+
 
 
 def main():
     """"""
 # Init data
 game_state = "menu"
+music_state = "on"
 max_objects = 4  # max number of obejects on screen at the same time (for difficulty & game)
 
 loop = 0  # for testing
@@ -26,6 +29,8 @@ SCREEN.blit(BACKGROUND, (0, 0))
 
 running = True
 
+
+
 while running:
     for event in pygame.event.get():
         
@@ -33,12 +38,13 @@ while running:
             running = False
 
         elif game_state == "menu":
-            game_state, running = menu(event, game_state, running)
+            game_state, running, music_state = menu(event, game_state, running, music_state)
 
         elif game_state == "game":
 
             game_state = play_game(event)
-        
+   
+    draw_music_button(music_state)
     pygame.display.flip()
     clock.tick(60) 
         
