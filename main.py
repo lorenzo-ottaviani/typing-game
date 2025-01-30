@@ -32,16 +32,12 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-        if game_state == "menu":
-            game_state = menu(event, game_state)
+        elif game_state == "menu":
+            game_state, running = menu(event, game_state, running)
 
         elif game_state == "game":
 
             game_state = play_game(event)
-            # print(f"game state: {game_state}")
-
-        #     loop += 1  # for testing
-        # print(f"end of loop {loop}") # for testing
         
     pygame.display.flip()
     clock.tick(60) 

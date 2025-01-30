@@ -1,8 +1,9 @@
 from .init_pygame import *
 from .draw_text import draw_text
 from .play_button import play_button
+from .quit_button import quit_button
 
-def menu(event, game_state):
+def menu(event, game_state, running):
     
     # Add images behind background
     SCREEN.blit(APPLE, (100, 50))
@@ -38,6 +39,9 @@ def menu(event, game_state):
     draw_text("Attention !!! Ne pas couper les bombes !!!", FONT, ORANGE, 700, 600)
     
     # Call play_button
+    running = quit_button(event)
+    
+    # Call play_button
     game_state = play_button(event)
-    # print(game_state)
-    return game_state
+    
+    return game_state, running
