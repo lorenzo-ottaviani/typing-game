@@ -45,12 +45,12 @@ while running:
 
         elif game_state == "menu":
             game_state, running, music_state = menu(event, game_state, running, music_state)
+            draw_music_button(music_state)
 
         elif game_state == "game":
 
             game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer, frame_countdown = play_game(event, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
    
-    draw_music_button(music_state)
     pygame.display.flip()
     clock.tick(60) 
         
