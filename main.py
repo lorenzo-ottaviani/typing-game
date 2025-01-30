@@ -32,8 +32,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-        if game_state == "menu":
-            game_state = menu(event, game_state)
+        elif game_state == "menu":
+            game_state, running = menu(event, game_state, running)
 
         elif game_state == "game":
 
