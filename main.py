@@ -38,10 +38,6 @@ while running:
         elif game_state == "game":
 
             game_state = play_game(event)
-            # print(f"game state: {game_state}")
-
-        #     loop += 1  # for testing
-        # print(f"end of loop {loop}") # for testing
         
     pygame.display.flip()
     clock.tick(60) 

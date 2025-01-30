@@ -39,10 +39,9 @@ def menu(event, game_state, running):
     draw_text("Attention !!! Ne pas couper les bombes !!!", FONT, ORANGE, 700, 600)
     
     # Call play_button
-    game_state = play_button(event)
-    
-    # Call play_button
     running = quit_button(event)
     
-    print(game_state, running)
+    # Call play_button
+    game_state = play_button(event)
+    
     return game_state, running
