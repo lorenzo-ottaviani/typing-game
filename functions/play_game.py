@@ -1,21 +1,35 @@
 from .init_pygame import *
-from .handle_key_press import handle_key_press
+# from .handle_key_press import handle_key_press
 from .draw_text import draw_text
+from .generate_object import generate_object
 
-# Game variables 
-score = 0 
-player_lives = 3
-objects = []
 
-frozen = False
-frozen_timer = 900  # 900 frames /60 = 15
-input_type = None
-# level = 1
-
-def play_game(event, game_state = "game"):
+def play_game(event, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state = "game"):
     # print("play game")
     draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
     draw_text(f"Score: {score}", FONT, WHITE, 0.2 * WIDTH, 0.1 * HEIGHT)
+
+    if frame_countdown > 0:
+        frame_countdown -= 1
+
+    else:
+        objects.append(generate_object())
+        # print(f"objects post append: {objects}")
+        frame_countdown = 45
+
+    if objects != None:
+        for obj in objects:
+            obj["x"] += obj["speed_x"]
+            obj["y"] += obj["speed_y"] * obj["time"] + 5 * obj["time"] ** 2
+
+        SCREEN.blit(BACKGROUND, (0, 0))
+        draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
+        draw_text(f"Score: {score}", FONT, WHITE, 0.2 * WIDTH, 0.1 * HEIGHT)
+
+        for obj in objects:
+            SCREEN.blit(obj["img"], (obj["x"], obj["y"]))
+            draw_text(obj["letter"], FONT_LETTER, WHITE,  obj["x"], obj["y"])
+            obj["time"] += 0.04
 
     # for event in pygame.event.get():
     if event.type == pygame.KEYDOWN:
@@ -26,4 +40,4 @@ def play_game(event, game_state = "game"):
                   game_state = "menu"
                   print(f"event key: {event.key}, game state:{game_state} ")
                   SCREEN.blit(BACKGROUND, (0, 0))
-    return game_state
+    return game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer, frame_countdown

@@ -40,7 +40,8 @@ STRAWBERRY = pygame.image.load("assets/images/fruits/strawberry.png")
 clock = pygame.time.Clock()
 
 # game variables
-# Get object type
 object_type = [APPLE, BANANA, BOMB, CHERRY, ICE_CUBE, MANGO, PEAR, STRAWBERRY]
 object_data = {}
 OBJECT_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+x_min = 6/14 * WIDTH
+x_max = 8/14 * WIDTH
