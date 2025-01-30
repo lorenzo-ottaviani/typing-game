@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+import sys
 
 #initialize pygame
 pygame.init()
@@ -19,6 +20,7 @@ BACKGROUND = pygame.transform.scale(BACKGROUND_IMAGE, SCREEN_SIZE)
 FONT_HEADER = pygame.font.Font('Tsuchigumo.otf', 60)
 FONT_SUB_HEADER = pygame.font.Font('Tsuchigumo.otf', 40)
 FONT = pygame.font.Font('Tsuchigumo.otf', 25)
+FONT_LETTER = pygame.font.SysFont('arialblack', 50)
 
 # Colors
 WHITE = (255, 255, 255)

@@ -1,6 +1,7 @@
 from functions.init_pygame import *
 import random
 from random import uniform
+from functions.draw_text import draw_text
 
 x_min = 6/14 * WIDTH
 x_max = 8/14 * WIDTH
@@ -58,6 +59,8 @@ while running:
 
         for obj in objects:
             SCREEN.blit(obj["img"], (obj["x"], obj["y"]))
+            draw_text(obj["letter"], FONT_LETTER, WHITE,  obj["x"], obj["y"])
+
     
     pygame.display.flip()
 
