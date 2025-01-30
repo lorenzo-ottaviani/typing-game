@@ -39,6 +39,6 @@ clock = pygame.time.Clock()
 
 # game variables
 # Get object type
-object_type = ["apple", "banana", "bomb", "cherry", "ice_cube", "mango", "pear", "strawberry"]
+object_type = [APPLE, BANANA, BOMB, CHERRY, ICE_CUBE, MANGO, PEAR, STRAWBERRY]
 object_data = {}
 OBJECT_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

@@ -17,7 +17,7 @@ from functions.play_game import play_game
 def main():
     """"""
 # Init data
-game_state = "game"
+game_state = "menu"
 max_objects = 4  # max number of obejects on screen at the same time (for difficulty & game)
 
 loop = 0  # for testing

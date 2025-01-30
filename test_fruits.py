@@ -18,8 +18,15 @@ x_max = 8/14 * SCREEN_WIDTH
 
 def generate_object():
     """"""
-    objet = {"type": "random(object_types)", "x": uniform(x_min, x_max), "y": SCREEN_HEIGHT,
-             "speed_x": uniform(-7, 7), "speed_y": uniform(-17, -15), "apple": apple, "pear": pear}
+    objet = {
+        "type": "random(object_types)", 
+        "x": uniform(x_min, x_max), 
+        "y": SCREEN_HEIGHT,
+        "speed_x": uniform(-7, 7), 
+        "speed_y": uniform(-17, -15), 
+        "apple": apple, 
+        "pear": pear
+        }
     game_elements = [objet["x"], objet["y"], objet["speed_x"], objet["speed_y"]]
     return game_elements
 
