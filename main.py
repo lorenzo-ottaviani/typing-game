@@ -72,7 +72,7 @@ while running:
         # draw_music_button(music_state)
 
     elif game_state == "game":
-        game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer = play_game(event, difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
+        game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer = play_game(difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
     
     elif game_state == "game_over":
         SCREEN.blit(BACKGROUND, (0, 0))
