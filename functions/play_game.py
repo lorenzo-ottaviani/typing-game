@@ -6,7 +6,7 @@ import time
 
 
 
-def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state = "game"):
+def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state):
     """
 
     :param event:
@@ -28,42 +28,44 @@ def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen,
     if frame_countdown > 0:
         frame_countdown -= 1
 
-    else:
-        objects.append(generate_object())
+    if frame_countdown == 0:
+        if frozen == False:
+            objects.append(generate_object())
         # print(f"objects post append: {objects}")
-        if difficulty == "medium":
-            frame_countdown = 45
-        elif difficulty == "easy":
-            frame_countdown = 60
-        elif difficulty == "hard":
-            frame_countdown = 30
+            if difficulty == "medium":
+                frame_countdown = 45
+            elif difficulty == "easy":
+                frame_countdown = 60
+            elif difficulty == "hard":
+                frame_countdown = 30
 
-    if objects != None:
-        for obj in objects:
-            if not frozen:
+    if frozen == False:
+        if objects != None:
+            for obj in objects:
                 obj["x"] += obj["speed_x"]
                 obj["y"] += obj["speed_y"] * obj["time"] + 5 * obj["time"] ** 2
-            else:
-                frozen_timer = frozen_timer - 1
-                if frozen_timer == 0:
-                    frozen = False
+            
+    if frozen == True:
+        frozen_timer = frozen_timer - 1
+        if frozen_timer == 0:
+            frozen = False
 
-        SCREEN.blit(BACKGROUND, (0, 0))
-        draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
-        draw_text(f"Score: {score}", FONT, WHITE, 0.2 * WIDTH, 0.1 * HEIGHT)
+    SCREEN.blit(BACKGROUND, (0, 0))
+    draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
+    draw_text(f"Score: {score}", FONT, WHITE, 0.2 * WIDTH, 0.1 * HEIGHT)
 
-        for obj in objects:
-            SCREEN.blit(obj["img"], (obj["x"], obj["y"]))
-            draw_text(obj["letter"], FONT_LETTER, WHITE,  obj["x"], obj["y"])
+    for obj in objects:
+        SCREEN.blit(obj["img"], (obj["x"], obj["y"]))
+        draw_text(obj["letter"], FONT_LETTER, WHITE,  obj["x"], obj["y"])
 
-            if not frozen:
-                obj["time"] += 0.04
+        if frozen == False:
+            obj["time"] += 0.04
             # else:
             #     frozen_timer = frozen_timer - 1
             #     if frozen_timer == 0:
             #         frozen = False
 
-    if objects is not None:
+    if objects != None:
         for obj in objects:
             if obj["y"] > HEIGHT:
                 player_lives -= 1  # Deduct life once
@@ -71,7 +73,5 @@ def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen,
                 
     if player_lives == 0:
         game_state = "game_over"
-
-
             
-    return game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer
+    return frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state
