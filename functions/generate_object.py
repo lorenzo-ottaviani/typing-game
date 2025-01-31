@@ -1,10 +1,13 @@
-from functions.init_pygame import *
+from .init_pygame import *
 import random
 from random import uniform
-from functions.draw_text import draw_text
+from .draw_text import draw_text
 
 def generate_object():
-    """"""
+    """
+
+    :return:
+    """
     object_data = {
         "img": random.choice(object_type),
         "letter": random.choice(OBJECT_LETTERS),

@@ -17,6 +17,12 @@ music_button_rect = play_music_icon.get_rect(topleft=(260, 580))
 music_state = "on"
 
 def play_music(event, music_state):
+    """
+
+    :param event:
+    :param music_state:
+    :return:
+    """
 
     # Change music_state
     if event.type == pygame.MOUSEBUTTONDOWN:

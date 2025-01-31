@@ -5,7 +5,19 @@ from .generate_object import generate_object
 
 
 def play_game(event, difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state = "game"):
-    ''''''
+    """
+
+    :param event:
+    :param difficulty:
+    :param frame_countdown:
+    :param score:
+    :param player_lives:
+    :param objects:
+    :param frozen:
+    :param frozen_timer:
+    :param game_state:
+    :return:
+    """
     # pygame.event.set_blocked(pygame.MOUSEMOTION)
     # print("play game")
     draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
