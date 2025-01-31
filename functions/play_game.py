@@ -4,10 +4,8 @@ from .draw_text import draw_text
 from .generate_object import generate_object
 
 
-def play_game(event, difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state = "game"):
+def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state = "game"):
     ''''''
-    # pygame.event.set_blocked(pygame.MOUSEMOTION)
-    # print("play game")
     draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
     draw_text(f"Score: {score}", FONT, WHITE, 0.2 * WIDTH, 0.1 * HEIGHT)
 
