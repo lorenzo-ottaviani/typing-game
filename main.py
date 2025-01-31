@@ -12,8 +12,8 @@ from functions.init_pygame import *
 # import functions
 from functions.menu import menu
 from functions.play_game import play_game
-from functions.play_music import draw_music_button
-from functions.handle_key_press import handle_key_press
+from functions.draw_text import draw_text
+
 
 
 def main():
@@ -48,32 +48,41 @@ while running:
         if event.type == pygame.KEYDOWN:
         # handle_key_press(event.key)
 
-            if game_state == "game":
-                print(f"key pressed: {event}")
+            if game_state == "game" or game_state == "game_over":
 
                 if event.key == 13 or event.key == 27:  # 13: 'enter', 27: 'esc'
                     game_state = "menu"
                     # print(f"event key: {event.key}, game state:{game_state} ")
                     SCREEN.blit(BACKGROUND, (0, 0)) 
-                else:
-                    # handle_key_press(event.key, objects)
-                    print(objects)
-                    try:
-                        key_char = event.unicode.upper()
-                    except ValueError:
-                        print("not a letter")
-                    for object in objects:
-                        if key_char == "letter":
-                            print(f"get sliced")
+            
+            if game_state == "game":
+                # handle_key_press(event.key, objects)
+                print(f"key pressed: {event.key}")
+                print(objects)
+                try:
+                    key_char = event.unicode.upper()
+                except ValueError:
+                    print("not a letter")
+                for object in objects:
+                    if key_char == "letter":
+                        print(f"get sliced")
 
     if game_state == "menu":
         game_state, music_state = menu(event, game_state, music_state)
         # draw_music_button(music_state)
 
     elif game_state == "game":
-
-        game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer = play_game(difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
-   
+        game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer = play_game(event, difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
+    
+    elif game_state == "game_over":
+        SCREEN.blit(BACKGROUND, (0, 0))
+        draw_text("GAME OVER", FONT_HEADER, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT)
+        draw_text(f"Score: {score}", FONT_SMALL, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT + 50)
+        draw_text("Entrer Esc pour retourner au menu", FONT_SMALL, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT + 80)
+        score = 0
+        player_lives = 3
+        objects = []
+    
     pygame.display.flip()
     clock.tick(60) 
         

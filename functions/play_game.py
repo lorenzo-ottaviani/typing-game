@@ -2,7 +2,8 @@ from .init_pygame import *
 # from .handle_key_press import handle_key_press
 from .draw_text import draw_text
 from .generate_object import generate_object
-from time import sleep
+import time
+
 
 
 def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state = "game"):
@@ -62,4 +63,15 @@ def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen,
             #     if frozen_timer == 0:
             #         frozen = False
 
+    if objects is not None:
+        for obj in objects:
+            if obj["y"] > HEIGHT:
+                player_lives -= 1  # Deduct life once
+                objects.remove(obj)
+                
+    if player_lives == 0:
+        game_state = "game_over"
+
+
+            
     return game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer
