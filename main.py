@@ -21,21 +21,20 @@ def main():
 # Init data
 game_state = "menu"
 music_state = "on"
+difficulty = "medium"
 max_objects = 4  # max number of obejects on screen at the same time (for difficulty & game)
-frame_countdown = 45 
+frame_countdown = 10
 score = 0 
 player_lives = 3
 objects = []
 frozen = False
-frozen_timer = 900  # 900 frames /60 = 15
+frozen_timer = 900  # 900 frames /60 = 15 seconds
 # input_type = None
 # level = 1
 
 SCREEN.blit(BACKGROUND, (0, 0))
 
 running = True
-
-
 
 while running:
     for event in pygame.event.get():
@@ -45,11 +44,11 @@ while running:
 
         elif game_state == "menu":
             game_state, running, music_state = menu(event, game_state, running, music_state)
-            draw_music_button(music_state)
+            # draw_music_button(music_state)
 
         elif game_state == "game":
 
-            game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer, frame_countdown = play_game(event, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
+            game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer = play_game(event, difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
    
     pygame.display.flip()
     clock.tick(60) 

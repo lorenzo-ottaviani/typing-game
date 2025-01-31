@@ -4,7 +4,9 @@ from .draw_text import draw_text
 from .generate_object import generate_object
 
 
-def play_game(event, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state = "game"):
+def play_game(event, difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state = "game"):
+    ''''''
+    # pygame.event.set_blocked(pygame.MOUSEMOTION)
     # print("play game")
     draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
     draw_text(f"Score: {score}", FONT, WHITE, 0.2 * WIDTH, 0.1 * HEIGHT)
@@ -15,7 +17,12 @@ def play_game(event, frame_countdown, score, player_lives, objects, frozen, froz
     else:
         objects.append(generate_object())
         # print(f"objects post append: {objects}")
-        frame_countdown = 45
+        if difficulty == "medium":
+            frame_countdown = 45
+        elif difficulty == "easy":
+            frame_countdown = 60
+        elif difficulty == "hard":
+            frame_countdown = 30
 
     if objects != None:
         for obj in objects:
@@ -40,4 +47,4 @@ def play_game(event, frame_countdown, score, player_lives, objects, frozen, froz
                   game_state = "menu"
                   print(f"event key: {event.key}, game state:{game_state} ")
                   SCREEN.blit(BACKGROUND, (0, 0))
-    return game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer, frame_countdown
+    return game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer
