@@ -49,6 +49,7 @@ def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen,
         frozen_timer = frozen_timer - 1
         if frozen_timer == 0:
             frozen = False
+            frozen_timer = 300
 
     SCREEN.blit(BACKGROUND, (0, 0))
     draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
