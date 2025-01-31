@@ -1,6 +1,6 @@
 """
 Authors : Lorenzo OTTAVIANI, Olivier PORTAL et Thibault CARON.
-Date : 27/01/2025 11h45
+Date : 31/01/2025 11h05
 Aim of the program :
     Execute a typing fruit game with PyGame.
 Inputs :
@@ -12,39 +12,77 @@ from functions.init_pygame import *
 # import functions
 from functions.menu import menu
 from functions.play_game import play_game
-from functions.play_music import draw_music_button
+from functions.draw_text import draw_text
 
 
 
 def main():
-    """"""
+    """
+
+    :return: 
+    """
 # Init data
 game_state = "menu"
 music_state = "on"
+difficulty = "medium"
 max_objects = 4  # max number of obejects on screen at the same time (for difficulty & game)
-
-loop = 0  # for testing
+frame_countdown = 10
+score = 0 
+player_lives = 3
+objects = []
+frozen = False
+frozen_timer = 900  # 900 frames /60 = 15 seconds
+# input_type = None
+# level = 1
 
 SCREEN.blit(BACKGROUND, (0, 0))
 
 running = True
 
-
-
 while running:
     for event in pygame.event.get():
         
         if event.type == pygame.QUIT:
-            running = False
+            running = False    
 
-        elif game_state == "menu":
-            game_state, running, music_state = menu(event, game_state, running, music_state)
+        if event.type == pygame.KEYDOWN:
+        # handle_key_press(event.key)
 
-        elif game_state == "game":
+            if game_state == "game" or game_state == "game_over":
 
-            game_state = play_game(event)
-   
-    draw_music_button(music_state)
+                if event.key == 13 or event.key == 27:  # 13: 'enter', 27: 'esc'
+                    game_state = "menu"
+                    # print(f"event key: {event.key}, game state:{game_state} ")
+                    SCREEN.blit(BACKGROUND, (0, 0)) 
+            
+            if game_state == "game":
+                # handle_key_press(event.key, objects)
+                print(f"key pressed: {event.key}")
+                print(objects)
+                try:
+                    key_char = event.unicode.upper()
+                except ValueError:
+                    print("not a letter")
+                for object in objects:
+                    if key_char == "letter":
+                        print(f"get sliced")
+
+    if game_state == "menu":
+        game_state, music_state = menu(event, game_state, music_state)
+        # draw_music_button(music_state)
+
+    elif game_state == "game":
+        game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer = play_game(difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
+    
+    elif game_state == "game_over":
+        SCREEN.blit(BACKGROUND, (0, 0))
+        draw_text("GAME OVER", FONT_HEADER, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT)
+        draw_text(f"Score: {score}", FONT_SMALL, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT + 50)
+        draw_text("Entrer Esc pour retourner au menu", FONT_SMALL, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT + 80)
+        score = 0
+        player_lives = 3
+        objects = []
+    
     pygame.display.flip()
     clock.tick(60) 
         

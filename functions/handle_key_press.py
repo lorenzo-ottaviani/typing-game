@@ -1,6 +1,11 @@
 from .play_game import *
 
 def handle_key_press(key):
+        """
+
+        :param key:
+        :return:
+        """
         # try:
         #     key_char = chr(key).upper()
         # except ValueError:
