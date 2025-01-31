@@ -12,7 +12,7 @@ from functions.init_pygame import *
 # import functions
 from functions.menu import menu
 from functions.play_game import play_game
-from functions.play_music import draw_music_button
+from functions.draw_text import draw_text
 
 
 
@@ -48,7 +48,7 @@ while running:
         if event.type == pygame.KEYDOWN:
         # handle_key_press(event.key)
 
-            if game_state == "game":
+            if game_state == "game" or game_state == "game_over":
                 print(f"key pressed: {event.key}")
 
                 if event.key == 13 or event.key == 27:  # 13: 'enter', 27: 'esc'
@@ -63,7 +63,16 @@ while running:
     elif game_state == "game":
 
         game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer = play_game(event, difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
-   
+    
+    elif game_state == "game_over":
+        SCREEN.blit(BACKGROUND, (0, 0))
+        draw_text("GAME OVER", FONT_HEADER, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT)
+        draw_text(f"Score: {score}", FONT_SMALL, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT + 50)
+        draw_text("Entrer Esc pour retourner au menu", FONT_SMALL, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT + 80)
+        score = 0
+        player_lives = 3
+        objects = []
+    
     pygame.display.flip()
     clock.tick(60) 
         

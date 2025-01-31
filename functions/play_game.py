@@ -70,12 +70,7 @@ def play_game(event, difficulty, frame_countdown, score, player_lives, objects, 
                 objects.remove(obj)
                 
     if player_lives == 0:
-        draw_text("GAME OVER", FONT, WHITE, 0.5*WIDTH, 0.5*HEIGHT)
-        time.sleep(5)
-        player_lives = 3
-        objects = []
-        score = 0
-        game_state = "menu"
+        game_state = "game_over"
 
 
             
