@@ -45,7 +45,7 @@ STRAWBERRY_BOTTOM = pygame.image.load("assets/images/fruits/strawberry_Bottom.pn
 clock = pygame.time.Clock()
 
 # game variables
-object_type = [APPLE, BANANA, BOMB, CHERRY, ICE_CUBE, MANGO, PEAR, STRAWBERRY]
+object_type = [("apple", APPLE), ("banana", BANANA), ("bomb", BOMB), ("cherry", CHERRY), ("ice_cube", ICE_CUBE), ("mango", MANGO), ("pear", PEAR), ("strawberry", STRAWBERRY)]
 object_data = {}
 OBJECT_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 x_min = 6/14 * WIDTH

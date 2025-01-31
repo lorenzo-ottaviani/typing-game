@@ -6,7 +6,7 @@ import time
 
 
 
-def play_game(event, difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state = "game"):
+def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state = "game"):
     """
 
     :param event:

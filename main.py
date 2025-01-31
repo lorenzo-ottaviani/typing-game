@@ -49,20 +49,30 @@ while running:
         # handle_key_press(event.key)
 
             if game_state == "game" or game_state == "game_over":
-                print(f"key pressed: {event.key}")
 
                 if event.key == 13 or event.key == 27:  # 13: 'enter', 27: 'esc'
-                        game_state = "menu"
-                        print(f"event key: {event.key}, game state:{game_state} ")
-                        SCREEN.blit(BACKGROUND, (0, 0))        
+                    game_state = "menu"
+                    # print(f"event key: {event.key}, game state:{game_state} ")
+                    SCREEN.blit(BACKGROUND, (0, 0)) 
+            
+            if game_state == "game":
+                # handle_key_press(event.key, objects)
+                print(f"key pressed: {event.key}")
+                print(objects)
+                try:
+                    key_char = event.unicode.upper()
+                except ValueError:
+                    print("not a letter")
+                for object in objects:
+                    if key_char == "letter":
+                        print(f"get sliced")
 
     if game_state == "menu":
         game_state, music_state = menu(event, game_state, music_state)
         # draw_music_button(music_state)
 
     elif game_state == "game":
-
-        game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer = play_game(event, difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
+        game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer = play_game(difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
     
     elif game_state == "game_over":
         SCREEN.blit(BACKGROUND, (0, 0))
