@@ -2,9 +2,11 @@ from .init_pygame import *
 from .draw_text import draw_text
 from .play_button import play_button
 from .quit_button import quit_button
+from .choose_difficulty import choose_difficulty
 from .play_music import play_music, draw_music_button
 
-def menu(event, game_state, music_state):
+
+def menu(event, game_state, music_state, difficulty):
     """
 
     :param event:
@@ -42,19 +44,30 @@ def menu(event, game_state, music_state):
     SCREEN.blit(logo, logo_rect)
     
     # Add explanation text to explain how to play
-    draw_text("Comment jouer à Fruit Ninja Slicer ?", FONT_SUB_HEADER, ORANGE, 700, 380)
-    draw_text("Cliquer sur le bouton jouer", FONT, ORANGE, 700, 440)
-    draw_text("Des fruits vont apparaitre avec une lettre", FONT, ORANGE, 700, 480)
-    draw_text("Vous devez taper la touche correspondante", FONT, ORANGE, 700, 520)
-    draw_text("Les glaçons vous donnent un bonus de temps de 5 secondes", FONT, ORANGE, 700, 560)
-    draw_text("Attention !!! Ne pas couper les bombes !!!", FONT, ORANGE, 700, 600)
+    # Language French
+    # draw_text("Comment jouer à Fruit Ninja Slicer ?", FONT_SUB_HEADER, ORANGE, 700, 380)
+    # draw_text("Cliquer sur le bouton jouer", FONT, ORANGE, 700, 440)
+    # draw_text("Des fruits vont apparaitre avec une lettre", FONT, ORANGE, 700, 480)
+    # draw_text("Vous devez taper la touche correspondante", FONT, ORANGE, 700, 520)
+    # draw_text("Les glaçons vous donnent un bonus de temps de 5 secondes", FONT, ORANGE, 700, 560)
+    # draw_text("Attention !!! Ne pas couper les bombes !!!", FONT, ORANGE, 700, 600)
+
+    draw_text("How to play Fruit Ninja Slicer ?", FONT_SUB_HEADER, ORANGE, 700, 380)
+    draw_text("Click on the 'Play' button", FONT, ORANGE, 700, 440)
+    draw_text("Some fruits will appear, tied with a letter", FONT, ORANGE, 700, 480)
+    draw_text("You must type the corresponding key", FONT, ORANGE, 700, 520)
+    draw_text("The ice cubes give a 5 second 'frozen' time bonus", FONT, ORANGE, 700, 560)
+    draw_text("Careful !!! do not slice the bombs !!!", FONT, ORANGE, 700, 600)
     
-    # Call play_button
+    # Call quit_button
     quit_button(event)
     
     # Call play_button
     game_state = play_button(event)
+
+    # Call difficulty_button
+    difficulty = choose_difficulty(event, difficulty)
     
     draw_music_button(music_state)
     
-    return game_state, music_state
+    return game_state, music_state, difficulty

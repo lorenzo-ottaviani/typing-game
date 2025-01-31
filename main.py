@@ -82,7 +82,7 @@ while running:
 
 
     if game_state == "menu":
-        game_state, music_state = menu(event, game_state, music_state)
+        game_state, music_state, difficulty = menu(event, game_state, music_state, difficulty)
         # draw_music_button(music_state)
 
     elif game_state == "game":
