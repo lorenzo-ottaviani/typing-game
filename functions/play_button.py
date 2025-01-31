@@ -14,8 +14,7 @@ def play_button(event, game_state = "menu"):
 
     if  play_button_rect.collidepoint(x, y):
         play_button = pygame.transform.scale(play_button_image, (120 * 1.1, 165 * 1.1)).convert_alpha()
-        play_button_rect = play_button.get_rect()
-        play_button_rect.topleft = (255, 375)
+        play_button_rect = play_button.get_rect(topleft=(255, 375))
         SCREEN.blit(play_button, play_button_rect)
         
         if event.type == pygame.MOUSEBUTTONDOWN:
