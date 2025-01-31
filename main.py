@@ -15,7 +15,6 @@ from functions.play_game import play_game
 from functions.draw_text import draw_text
 
 
-
 def main():
     """
 
@@ -67,7 +66,7 @@ while running:
 
                 for object in objects: 
                     if key_char == object["letter"] and object["type"] == "bomb":
-                        player_lives == 0
+                        player_lives = 0
                         # game_state == "game_over"
                         # print(f"game state: {game_state}")
                         # print(f"object: {object}")
@@ -77,7 +76,7 @@ while running:
                         objects.remove(object)
                     elif key_char == object["letter"] and object["type"] != "bomb" and object["type"] != "ice_cube":
                         # print(f"get sliced")
-                        score +=1
+                        score += 1
                         objects.remove(object)
 
 
