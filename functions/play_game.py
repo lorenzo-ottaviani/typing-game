@@ -38,13 +38,4 @@ def play_game(event, difficulty, frame_countdown, score, player_lives, objects, 
             draw_text(obj["letter"], FONT_LETTER, WHITE,  obj["x"], obj["y"])
             obj["time"] += 0.04
 
-    # for event in pygame.event.get():
-    if event.type == pygame.KEYDOWN:
-            # handle_key_press(event.key)
-            print(f"key pressed: {event.key}")
-
-            if event.key == 13 or event.key == 27:  # 13: 'enter', 27: 'esc'
-                  game_state = "menu"
-                  print(f"event key: {event.key}, game state:{game_state} ")
-                  SCREEN.blit(BACKGROUND, (0, 0))
     return game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer

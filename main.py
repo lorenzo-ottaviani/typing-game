@@ -40,15 +40,26 @@ while running:
     for event in pygame.event.get():
         
         if event.type == pygame.QUIT:
-            running = False
+            running = False    
 
-        elif game_state == "menu":
-            game_state, running, music_state = menu(event, game_state, running, music_state)
-            # draw_music_button(music_state)
+        if event.type == pygame.KEYDOWN:
+        # handle_key_press(event.key)
 
-        elif game_state == "game":
+            if game_state == "game":
+                print(f"key pressed: {event.key}")
 
-            game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer = play_game(event, difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
+                if event.key == 13 or event.key == 27:  # 13: 'enter', 27: 'esc'
+                        game_state = "menu"
+                        print(f"event key: {event.key}, game state:{game_state} ")
+                        SCREEN.blit(BACKGROUND, (0, 0))        
+
+    if game_state == "menu":
+        game_state, running, music_state = menu(event, game_state, running, music_state)
+        # draw_music_button(music_state)
+
+    elif game_state == "game":
+
+        game_state, frame_countdown, score, player_lives, objects, frozen, frozen_timer = play_game(event, difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer)
    
     pygame.display.flip()
     clock.tick(60) 
