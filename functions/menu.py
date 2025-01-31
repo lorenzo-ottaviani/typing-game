@@ -4,7 +4,14 @@ from .play_button import play_button
 from .quit_button import quit_button
 from .play_music import play_music, draw_music_button
 
-def menu(event, game_state, running, music_state):
+def menu(event, game_state, music_state):
+    """
+
+    :param event:
+    :param game_state:
+    :param music_state:
+    :return:
+    """
     
     # Play music
     music_state = play_music(event, music_state)
@@ -43,11 +50,11 @@ def menu(event, game_state, running, music_state):
     draw_text("Attention !!! Ne pas couper les bombes !!!", FONT, ORANGE, 700, 600)
     
     # Call play_button
-    running = quit_button(event)
+    quit_button(event)
     
     # Call play_button
     game_state = play_button(event)
     
     draw_music_button(music_state)
     
-    return game_state, running, music_state
+    return game_state, music_state

@@ -1,6 +1,6 @@
 """
 Authors : Lorenzo OTTAVIANI, Olivier PORTAL et Thibault CARON.
-Date : 27/01/2025 11h45
+Date : 31/01/2025 11h05
 Aim of the program :
     Execute a typing fruit game with PyGame.
 Inputs :
@@ -17,7 +17,10 @@ from functions.handle_key_press import handle_key_press
 
 
 def main():
-    """"""
+    """
+
+    :return: 
+    """
 # Init data
 game_state = "menu"
 music_state = "on"
@@ -64,7 +67,7 @@ while running:
                             print(f"get sliced")
 
     if game_state == "menu":
-        game_state, running, music_state = menu(event, game_state, running, music_state)
+        game_state, music_state = menu(event, game_state, music_state)
         # draw_music_button(music_state)
 
     elif game_state == "game":

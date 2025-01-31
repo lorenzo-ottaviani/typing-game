@@ -2,6 +2,12 @@ from .init_pygame import *
 from .play_game import play_game
 
 def play_button(event, game_state = "menu"):
+    """
+
+    :param event:
+    :param game_state:
+    :return:
+    """
     # Add button
     play_button_image = pygame.image.load("assets/images/buttons/play_button.png")
     play_button = pygame.transform.scale(play_button_image, (120, 165)).convert_alpha()
