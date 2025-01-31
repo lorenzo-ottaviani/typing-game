@@ -7,7 +7,7 @@ from .play_music import play_music, draw_music_button
 def menu(event, game_state, running, music_state):
     
     # Play music
-    music_state = play_music(event, music_state)
+    music_state = play_music(event, music_state, game_state)
     
     # Add images behind background
     SCREEN.blit(APPLE, (100, 50))
