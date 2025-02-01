@@ -32,7 +32,7 @@ stored_scores = []
 player_lives = 3
 objects = []
 frozen = False
-frozen_timer = 300  # 900 frames /60 = 15 seconds
+frozen_timer = 300  # 300 frames /60 = 5 seconds
 # input_type = None
 # level = 1
 
@@ -69,11 +69,9 @@ while running:
                     if key_char == object["letter"] and object["type"] == "bomb":
                         player_lives = 0
                         objects.remove(object)
-                        score += 2
                     elif key_char == object["letter"] and object["type"] == "ice_cube":
                         frozen = True
                         objects.remove(object)
-                        score += 2
                     elif key_char == object["letter"] and object["type"] != "bomb" and object["type"] != "ice_cube":
                         # print(f"get sliced")
                         combo += 1

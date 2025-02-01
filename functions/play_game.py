@@ -72,7 +72,7 @@ def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen,
                 player_lives -= 1  # Deduct life once
                 objects.remove(obj)
                 
-    if player_lives == 0:
+    if player_lives <= 0:
         game_state = "game_over"
             
     return frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state
