@@ -1,11 +1,12 @@
+# Import init_pygame (configs & pygame configs file)
 from .init_pygame import *
 
-def quit_button(event, running = True):
-    """
 
-    :param event:
-    :param running:
-    :return:
+def quit_button(event):
+    """
+    Button used to quit the game.
+    :param event: The variable of the pygame event loop.
+    :return: ∅
     """
     # Add button
     quit_button_image = pygame.image.load("assets/images/buttons/quit_button.png")
@@ -25,4 +26,3 @@ def quit_button(event, running = True):
             exit()
 
     SCREEN.blit(quit_button, quit_button_rect)
-

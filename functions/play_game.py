@@ -1,27 +1,26 @@
+# Import init_pygame (configs & pygame configs file)
 from .init_pygame import *
-# from .handle_key_press import handle_key_press
+
+# Import functions
 from .draw_text import draw_text
 from .generate_object import generate_object
-import time
-
 
 
 def play_game(difficulty, frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer, game_state):
     """
-
-    :param event:
-    :param difficulty:
-    :param frame_countdown:
-    :param score:
-    :param player_lives:
-    :param objects:
-    :param frozen:
-    :param frozen_timer:
-    :param game_state:
-    :return:
+    The game function.
+    :param difficulty: The game difficulty chosen.
+    :param frame_countdown: The speed of appearance of objects on screen: change with the difficulty.
+    :param score: The game score.
+    :param combo_text: Variable used to now if the player as done a combo.
+    :param player_lives: Number o live of the player.
+    :param objects: A list of all the objects to display in the screen.
+    :param frozen: Freeze the game when "True".
+    :param frozen_timer: The duration of a game freeze.
+    :param game_state: The game state ("menu", "game" or "game_over").
+    :return: Game actions.
     """
-    # pygame.event.set_blocked(pygame.MOUSEMOTION)
-    # print("play game")
+
     draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
     draw_text(f"Score: {score}", FONT, WHITE, 0.2 * WIDTH, 0.1 * HEIGHT)
 
@@ -29,9 +28,8 @@ def play_game(difficulty, frame_countdown, score, combo_text, player_lives, obje
         frame_countdown -= 1
 
     if frame_countdown == 0:
-        if frozen == False:
+        if not frozen:
             objects.append(generate_object())
-        # print(f"objects post append: {objects}")
             if difficulty == "medium":
                 frame_countdown = 45
             elif difficulty == "easy":
@@ -39,13 +37,13 @@ def play_game(difficulty, frame_countdown, score, combo_text, player_lives, obje
             elif difficulty == "hard":
                 frame_countdown = 30
 
-    if frozen == False:
-        if objects != None:
-            for obj in objects:
-                obj["x"] += obj["speed_x"]
-                obj["y"] += obj["speed_y"] * obj["time"] + 5 * obj["time"] ** 2
-            
-    if frozen == True:
+    if not frozen:
+        if objects is not None:
+            for element in objects:
+                element["x"] += element["speed_x"]
+                element["y"] += element["speed_y"] * element["time"] + 5 * element["time"] ** 2
+
+    if frozen:
         frozen_timer = frozen_timer - 1
         if frozen_timer == 0:
             frozen = False
@@ -56,23 +54,23 @@ def play_game(difficulty, frame_countdown, score, combo_text, player_lives, obje
     draw_text(f"Score: {score}", FONT, WHITE, 0.2 * WIDTH, 0.1 * HEIGHT)
     if combo_text[1] > 0:
         draw_text(f"Combo X{combo_text[0]}!", FONT, WHITE, 0.45 * WIDTH, 0.4 * HEIGHT)
-        combo_text[1] -= 1
+        combo_text[1] = -1
 
-    for obj in objects:
-        SCREEN.blit(obj["img"], (obj["x"], obj["y"]))
-        draw_text(obj["letter"], FONT_LETTER, WHITE,  obj["x"], obj["y"])
+    for element in objects:
+        SCREEN.blit(element["img"], (element["x"], element["y"]))
+        draw_text(element["letter"], FONT_LETTER, WHITE, element["x"], element["y"])
 
-        if frozen == False:
-            obj["time"] += 0.04
+        if not frozen:
+            element["time"] += 0.04
 
-    if objects != None:
-        for obj in objects:
-            if obj["y"] > HEIGHT:
-                objects.remove(obj)
-                if obj["type"] != "bomb":
+    if objects is not None:
+        for element in objects:
+            if element["y"] > HEIGHT:
+                objects.remove(element)
+                if element["type"] != "bomb":
                     player_lives -= 1  # Deduct life once
 
     if player_lives <= 0:
         game_state = "game_over"
-            
+
     return frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer, game_state

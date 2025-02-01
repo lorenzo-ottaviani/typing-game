@@ -1,8 +1,17 @@
+# Import init_pygame (configs & pygame configs file)
 from .init_pygame import *
+
+# Import functions
 from .draw_text import draw_text
 
+
 def choose_difficulty(event, difficulty):
-    """"""
+    """
+    Function to change the game difficulty.
+    :param event: The variable of the pygame event loop.
+    :param difficulty: The game difficulty chosen.
+    :return: The new difficulty set by the user.
+    """
     # Add button
     difficulty_button_image = pygame.image.load("assets/images/buttons/difficulty_button.png")
     difficulty_button = pygame.transform.scale(difficulty_button_image, (200, 90)).convert_alpha()

@@ -1,3 +1,4 @@
+# Import init_pygame (configs & pygame configs file)
 from .init_pygame import *
 from pygame import mixer
 
@@ -16,12 +17,13 @@ music_button_rect = play_music_icon.get_rect(topleft=(260, 580))
 
 music_state = "on"
 
+
 def play_music(event, music_state):
     """
-
-    :param event:
-    :param music_state:
-    :return:
+    Function used to change the music state.
+    :param event: The variable of the pygame event loop.
+    :param music_state: The music state (set "on" or "off").
+    :return: Change the music state.
     """
 
     # Change music_state
@@ -38,8 +40,13 @@ def play_music(event, music_state):
                 SCREEN.blit(play_music_icon, music_button_rect)
     return music_state    
 
+
 def draw_music_button(music_state):
-    """Affiche l'icône correspondante au statut de la musique."""
+    """
+    Function used to draw the music button.
+    :param music_state: The music state (set "on" or "off").
+    :return: ∅
+    """
     if music_state == "on":
         SCREEN.blit(play_music_icon, music_button_rect)
     else:
