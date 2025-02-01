@@ -28,6 +28,7 @@ max_objects = 4  # max number of obejects on screen at the same time (for diffic
 frame_countdown = 10
 score = 0
 combo = 0
+combo_text = (0, 0)
 stored_scores = []
 player_lives = 3
 objects = []
@@ -80,6 +81,7 @@ while running:
                     score += 1
                 elif combo > 1:
                     score += combo * 3 - 2
+                    combo_text = (combo, 30)
                 combo = 0
 
 
@@ -88,7 +90,7 @@ while running:
         # draw_music_button(music_state)
 
     elif game_state == "game":
-        frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state = play_game(difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state)
+        frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer, game_state = play_game(difficulty, frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer, game_state)
     
     elif game_state == "game_over":
         SCREEN.blit(BACKGROUND, (0, 0))

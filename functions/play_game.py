@@ -6,7 +6,7 @@ import time
 
 
 
-def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state):
+def play_game(difficulty, frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer, game_state):
     """
 
     :param event:
@@ -54,6 +54,9 @@ def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen,
     SCREEN.blit(BACKGROUND, (0, 0))
     draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
     draw_text(f"Score: {score}", FONT, WHITE, 0.2 * WIDTH, 0.1 * HEIGHT)
+    if combo_text[1] > 0:
+        draw_text(f"Combo X{combo_text[1]}!", FONT, WHITE, 0.45 * WIDTH, 0.4 * HEIGHT)
+        combo_text[1] -= 1
 
     for obj in objects:
         SCREEN.blit(obj["img"], (obj["x"], obj["y"]))
@@ -75,4 +78,4 @@ def play_game(difficulty, frame_countdown, score, player_lives, objects, frozen,
     if player_lives <= 0:
         game_state = "game_over"
             
-    return frame_countdown, score, player_lives, objects, frozen, frozen_timer, game_state
+    return frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer, game_state
