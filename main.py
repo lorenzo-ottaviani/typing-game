@@ -26,9 +26,10 @@ music_state = "on"
 difficulty = "medium"
 max_objects = 4  # max number of obejects on screen at the same time (for difficulty & game)
 frame_countdown = 10
-score = 0 
+score = 0
+combo = 0
 stored_scores = []
-player_lives = 13
+player_lives = 3
 objects = []
 frozen = False
 frozen_timer = 300  # 900 frames /60 = 15 seconds
@@ -67,17 +68,21 @@ while running:
                 for object in objects: 
                     if key_char == object["letter"] and object["type"] == "bomb":
                         player_lives = 0
-                        # game_state == "game_over"
-                        # print(f"game state: {game_state}")
-                        # print(f"object: {object}")
                         objects.remove(object)
+                        score += 2
                     elif key_char == object["letter"] and object["type"] == "ice_cube":
                         frozen = True
                         objects.remove(object)
+                        score += 2
                     elif key_char == object["letter"] and object["type"] != "bomb" and object["type"] != "ice_cube":
                         # print(f"get sliced")
-                        score += 1
+                        combo += 1
                         objects.remove(object)
+                if combo == 1:
+                    score += 1
+                elif combo > 1:
+                    score += combo * 3 - 2
+                combo = 0
 
 
     if game_state == "menu":
