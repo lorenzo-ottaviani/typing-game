@@ -6,7 +6,8 @@ from .draw_text import draw_text
 from .generate_object import generate_object
 
 
-def play_game(difficulty, frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer, game_state):
+def play_game(difficulty, frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer, game_state,
+              language):
     """
     The game function.
     :param difficulty: The game difficulty chosen.
@@ -18,10 +19,14 @@ def play_game(difficulty, frame_countdown, score, combo_text, player_lives, obje
     :param frozen: Freeze the game when "True".
     :param frozen_timer: The duration of a game freeze.
     :param game_state: The game state ("menu", "game" or "game_over").
+    :param language: The language chose by the user.
     :return: Game actions.
     """
+    if language == "English":
+        draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
+    elif language == "Français":
+        draw_text(f"Vies: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
 
-    draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
     draw_text(f"Score: {score}", FONT, WHITE, 0.2 * WIDTH, 0.1 * HEIGHT)
 
     if frame_countdown > 0:
@@ -50,8 +55,14 @@ def play_game(difficulty, frame_countdown, score, combo_text, player_lives, obje
             frozen_timer = 300
 
     SCREEN.blit(BACKGROUND, (0, 0))
-    draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
+
+    if language == "English":
+        draw_text(f"Lives: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
+    elif language == "Français":
+        draw_text(f"Vies: {player_lives}", FONT, WHITE, 0.1 * WIDTH, 0.1 * HEIGHT)
+
     draw_text(f"Score: {score}", FONT, WHITE, 0.2 * WIDTH, 0.1 * HEIGHT)
+
     if combo_text[1] > 0:
         draw_text(f"Combo X{combo_text[0]}!", FONT, WHITE, 0.45 * WIDTH, 0.4 * HEIGHT)
         combo_text[1] = combo_text[1] - 1
@@ -73,4 +84,4 @@ def play_game(difficulty, frame_countdown, score, combo_text, player_lives, obje
     if player_lives <= 0:
         game_state = "game_over"
 
-    return frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer, game_state
+    return frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer, game_state, language

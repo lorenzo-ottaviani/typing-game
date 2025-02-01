@@ -16,10 +16,10 @@ def choose_difficulty(event, difficulty):
     difficulty_button_image = pygame.image.load("assets/images/buttons/difficulty_button.png")
     difficulty_button = pygame.transform.scale(difficulty_button_image, (200, 90)).convert_alpha()
     difficulty_button_rect = difficulty_button.get_rect()
-    difficulty_button_rect.topleft = (980, 230)
+    difficulty_button_rect.topleft = (990, 300)
     SCREEN.blit(difficulty_button, difficulty_button_rect)
 
-    draw_text(f"{difficulty}", FONT_SUB_HEADER, WHITE, 1080, 300)
+    draw_text(f"{difficulty}", FONT_SUB_HEADER, WHITE, 1090, 370)
 
     # Check mouse position
     x, y = pygame.mouse.get_pos()

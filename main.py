@@ -76,22 +76,25 @@ def main():
                         score += 1
                     elif combo > 1:
                         score += combo * 3 - 2
-                        combo_text = [combo, 30]
+                        combo_text = [combo, 60]
                     combo = 0
 
         if game_state == "menu":
-            game_state, music_state, difficulty = menu(event, game_state, music_state, difficulty, language)
+            game_state, music_state, difficulty, language = menu(event, game_state, music_state, difficulty, language)
 
         elif game_state == "game":
-            (frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer, game_state) = (
+            frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer, game_state, language = (
                 play_game(difficulty, frame_countdown, score, combo_text, player_lives, objects, frozen, frozen_timer,
-                          game_state))
+                          game_state, language))
 
         elif game_state == "game_over":
             SCREEN.blit(BACKGROUND, (0, 0))
             draw_text("GAME OVER", FONT_HEADER, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT)
             draw_text(f"Score: {score}", FONT_SMALL, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT + 50)
-            draw_text("Entrer Esc pour retourner au menu", FONT_SMALL, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT + 80)
+            if language == "English":
+                draw_text("Enter Esc to return to the menu", FONT_SMALL, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT + 80)
+            elif language == "Français":
+                draw_text("Entrer Échap pour retourner au menu", FONT_SMALL, WHITE, 0.5 * WIDTH, 0.5 * HEIGHT + 80)
 
         pygame.display.flip()
         clock.tick(60)

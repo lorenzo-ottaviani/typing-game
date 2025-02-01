@@ -6,6 +6,7 @@ from .draw_text import draw_text
 from .play_button import play_button
 from .quit_button import quit_button
 from .choose_difficulty import choose_difficulty
+from .choose_language import choose_language
 from .play_music import play_music, draw_music_button
 
 
@@ -54,7 +55,7 @@ def menu(event, game_state, music_state, difficulty, language):
         draw_text("The ice cubes give a 5 second 'frozen' time bonus", FONT, ORANGE, 700, 560)
         draw_text("Careful !!! do not slice the bombs !!!", FONT, ORANGE, 700, 600)
 
-    elif language == "French":
+    elif language == "Français":
         # Language French
         draw_text("Comment jouer à Fruit Ninja Slicer ?", FONT_SUB_HEADER, ORANGE, 700, 380)
         draw_text("Cliquer sur le bouton jouer", FONT, ORANGE, 700, 440)
@@ -72,8 +73,11 @@ def menu(event, game_state, music_state, difficulty, language):
     # Call difficulty_button
     difficulty = choose_difficulty(event, difficulty)
 
+    # Call language_button
+    language = choose_language(event, language)
+
     # Call the music button
     music_state = play_music(event, music_state)
     draw_music_button(music_state)
 
-    return game_state, music_state, difficulty
+    return game_state, music_state, difficulty, language
