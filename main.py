@@ -28,7 +28,7 @@ def main():
     frame_countdown = 10  # Speed of appearance of objects on screen: change with the difficulty.
     score = 0
     combo = 0
-    combo_text = (0, 0)
+    combo_text = [0, 0]
     player_lives = 3
     objects = []  # A list of all the objects to display in the screen.
     frozen = False
@@ -76,7 +76,7 @@ def main():
                         score += 1
                     elif combo > 1:
                         score += combo * 3 - 2
-                        combo_text = (combo, 30)
+                        combo_text = [combo, 30]
                     combo = 0
 
         if game_state == "menu":
