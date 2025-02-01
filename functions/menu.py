@@ -34,7 +34,6 @@ def menu(event, game_state, music_state, difficulty, language):
 
     # Add a menu background
     menu_background = pygame.Surface((1000, 600), pygame.SRCALPHA)
-    # menu_background.set_alpha(40)
     menu_background.fill((255, 255, 255, 20))
     SCREEN.blit(menu_background, (200, 185 / 2))
 

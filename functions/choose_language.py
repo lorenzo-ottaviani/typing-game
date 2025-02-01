@@ -29,8 +29,8 @@ def choose_language(event, language):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if language == "English":
                 language = "Français"
-            # elif difficulty == "hard":
-            #     difficulty = "easy"
+            elif language == "Français":
+                language = "English"
             # elif difficulty == "easy":
             #     difficulty = "medium"
 
