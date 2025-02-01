@@ -64,17 +64,14 @@ def play_game(difficulty, frame_countdown, score, combo_text, player_lives, obje
 
         if frozen == False:
             obj["time"] += 0.04
-            # else:
-            #     frozen_timer = frozen_timer - 1
-            #     if frozen_timer == 0:
-            #         frozen = False
 
     if objects != None:
         for obj in objects:
             if obj["y"] > HEIGHT:
-                player_lives -= 1  # Deduct life once
                 objects.remove(obj)
-                
+                if obj["type"] != "bomb":
+                    player_lives -= 1  # Deduct life once
+
     if player_lives <= 0:
         game_state = "game_over"
             
