@@ -54,7 +54,7 @@ def play_game(difficulty, frame_countdown, score, combo_text, player_lives, obje
     draw_text(f"Score: {score}", FONT, WHITE, 0.2 * WIDTH, 0.1 * HEIGHT)
     if combo_text[1] > 0:
         draw_text(f"Combo X{combo_text[0]}!", FONT, WHITE, 0.45 * WIDTH, 0.4 * HEIGHT)
-        combo_text[1] = -1
+        combo_text[1] = combo_text[1] - 1
 
     for element in objects:
         SCREEN.blit(element["img"], (element["x"], element["y"]))
