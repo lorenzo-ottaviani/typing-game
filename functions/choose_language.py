@@ -18,6 +18,17 @@ def choose_language(event, language):
     language_button_rect = language_button.get_rect()
     language_button_rect.topleft = (890, 220)
     SCREEN.blit(language_button, language_button_rect)
+    
+    # Add french button
+    french_button_image = pygame.image.load("assets/images/buttons/french_button.png")
+    french_button = pygame.transform.scale(french_button_image, (200, 90)).convert_alpha()
+    french_button_rect = french_button.get_rect()
+    french_button_rect.topleft = (890, 220)
+    
+    niveau_button_image = pygame.image.load("assets/images/buttons/niveau_button.png")
+    niveau_button = pygame.transform.scale(niveau_button_image, (200, 90)).convert_alpha()
+    niveau_button_rect = niveau_button.get_rect()
+    niveau_button_rect.topleft = (990, 300)
 
     draw_text(f"{language}", FONT_SUB_HEADER, WHITE, 990, 290)
 
@@ -29,9 +40,10 @@ def choose_language(event, language):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if language == "English":
                 language = "Français"
+                SCREEN.blit(french_button, french_button_rect)
+                SCREEN.blit(niveau_button, niveau_button_rect)
             elif language == "Français":
                 language = "English"
-            # elif difficulty == "easy":
-            #     difficulty = "medium"
+                SCREEN.blit(language_button, language_button_rect)
 
     return language

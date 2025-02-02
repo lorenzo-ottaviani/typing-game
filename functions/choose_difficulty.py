@@ -18,6 +18,7 @@ def choose_difficulty(event, difficulty):
     difficulty_button_rect = difficulty_button.get_rect()
     difficulty_button_rect.topleft = (990, 300)
     SCREEN.blit(difficulty_button, difficulty_button_rect)
+    
 
     draw_text(f"{difficulty}", FONT_SUB_HEADER, WHITE, 1090, 370)
 
