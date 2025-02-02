@@ -1,12 +1,13 @@
+# Import init_pygame (configs & pygame configs file)
 from .init_pygame import *
-from .play_game import play_game
 
-def play_button(event, game_state = "menu"):
+
+def play_button(event, game_state="menu"):
     """
-
-    :param event:
-    :param game_state:
-    :return:
+    Button used to launch the game.
+    :param event: The variable of the pygame event loop.
+    :param game_state: The game status ("menu", "game" or "game_over").
+    :return: Change the game_state to launch the game.
     """
     # Add button
     play_button_image = pygame.image.load("assets/images/buttons/play_button.png")
@@ -18,11 +19,11 @@ def play_button(event, game_state = "menu"):
     # Check mouse position
     x, y = pygame.mouse.get_pos()
 
-    if  play_button_rect.collidepoint(x, y):
+    if play_button_rect.collidepoint(x, y):
         play_button = pygame.transform.scale(play_button_image, (120 * 1.1, 165 * 1.1)).convert_alpha()
         play_button_rect = play_button.get_rect(topleft=(255, 375))
         SCREEN.blit(play_button, play_button_rect)
-        
+
         if event.type == pygame.MOUSEBUTTONDOWN:
             game_state = "game"
             SCREEN.blit(BACKGROUND, (0, 0))
