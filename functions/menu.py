@@ -70,7 +70,7 @@ def menu(event, game_state, music_state, difficulty, language):
     game_state = play_button(event)
 
     # Call difficulty_button
-    difficulty = choose_difficulty(event, difficulty)
+    difficulty = choose_difficulty(event, difficulty, language)
 
     # Call language_button
     language = choose_language(event, language)
