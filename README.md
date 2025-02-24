@@ -14,6 +14,9 @@ You can choose between three levels of difficulty, and to play the game in
 English or in French.
 This game is created using the PyGame library of Python.
 
+- Language used: Python
+- Libraries used: PyGame, random
+
 ## **Installation**
 
 To install Fruit Ninja Slicer, follow these steps:
