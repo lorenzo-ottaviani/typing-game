@@ -12,6 +12,7 @@ In this game, you can also cut ice cubes to freeze the screen and win some
 useful seconds to slice all the fruits which are still on the screen.
 You can choose between three levels of difficulty, and to play the game in
 English or in French.
+
 This game is created using the PyGame library of Python.
 
 - Language used: Python
