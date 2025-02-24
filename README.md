@@ -1,4 +1,4 @@
-# Fruit Ninja Slicer
+# **Fruit Ninja Slicer**
 
 <img src="./assets/images/game_view.png" alt="A view of the game.">
 
