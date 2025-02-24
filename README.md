@@ -33,7 +33,7 @@ To use Fruit Ninja Slicer, follow these steps:
 
 1. Open the computer terminal.
 2. Navigate to the project directory: **`cd typing-game`**
-3. Launch the app.py file: **`py main.py`** or **`python main.py`** or **`python3 main.py`**
+3. Launch the main.py file: **`py main.py`** or **`python main.py`** or **`python3 main.py`**
 4. Play the game.
 
 ## **License**
